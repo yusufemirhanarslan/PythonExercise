@@ -105,3 +105,10 @@ with urlopen(url) as response:
    body = response.read()
 todo_item = json.loads(body)
 print(todo_item)
+
+#python functionlar
+def yasHesapla(age1, age2):
+    return int(age1) + int(age2)
+
+yasTop = yasHesapla(10, 15)
+print(yasTop)
