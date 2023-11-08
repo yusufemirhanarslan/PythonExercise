@@ -1,0 +1,30 @@
+Büyük miktarda verinin işlenmesi için gerekli olan tüm yapıyı sağlar. İşlem yönetimi, iş işleme durumu, istatistikler ve hata toleransı gibi durumları içerir.
+
+Job bir batch processing tamamını çerçeveleyen içeren bir yapıdır. Bir veya birden fazla adımı vardır. Adım bir basit bit görev veya öge yönelimli bir görev olan iş biriminin parçasıdır. Bir step ItemReader, opsiyonel olarak ItemProcessor ve ItemWriter içerir.
+Bir iş joblauncher ile başlatılması gerekiyor.  Jobparameter de verilebilir. Jobla ile yürütülen meta datalar jobRepositery de depolanır.
+
+JobInstance Tablosu = İş tanımıyla ilgili her şeyi veriyor.
+JobExecution Tablosu = Bu tablo bir işin başlama zamanı, bitme zamanı ve durum gibi bilgileri tutar ve her iş çalıştığında tabloya yeni bir satır eklenir.
+JobExecutionContext Tablosu = bir işin yürütme bağlamını içerir. Bir yürütme bağlamı, genellikle bir hata sonrasında geri alınması gereken durumu temsil eden çalışma zamanı bilgi çiftlerinin bir kümesidir ve genellikle anahtar/değer çiftlerinden oluşur.
+Step_Execution = Bu tablo bir adımın yürütülmesiyle ilgili start_time, end time, item okuma sayısı, ve item yazma sayısını tutar. Her adım çalıştığında yeni bir adım eklenir.
+StepExecutionContext = Bu tablo bir adımın yürütme bağlamını içerir. JobExecutionContext gibidir sadece bir adımın yürütme bağlamını depolar.
+JobExecutionParams = Job Execution un runtime parametlerini içerir.
+
+Application Katmanı =  Batch Job ve Custom kodları içerir.
+Batch Core Katmanı =  Spring Batch tarafından sağlanan ve toplu iş oluşturmak ve denetlemek için gerekli olan temel çalışma zamanı sınıflarını içerir. Job ve Step in yanı sıra yaygın olarak kullanılan JobRepository ve JobLauncher ‘i içerir.
+Batch Infrastructure Katmanı = Spring batch tarafından sağlanan readere, writer ın yanı sıra base service tarafından sağlanan tekrarlama ve yeniden deneme mekanizmalarını içerir.
+
+Basit olarak job işin adını ve işin ne yapması gerektiğini içerir. Execute method
+
+İş ilk olarak çalıştırıldığında JobRepositoryi bir JobExecution oluşturur.
+
+Job Instance bir job’un benzersiz parametresidir. Böylelikle diğer instance lardan ayrılır.
+
+JobInstances'ı işlenecek verileri temsil edecek şekilde tasarlamak, hata durumunda yapılandırmak, test etmek ve düşünmek daha kolaydır.
+
+Bu nedenle, her JobInstance birden çok JobExecution'a sahip olabilir. 
+
+Step, bir toplu işin bağımsız, sıralı bir aşamasını kapsülleyen bir etki alanı nesnesidir. Bir toplu işte bir iş birimi tanımlamak için gerekli tüm bilgileri içerir.
+
+
+
