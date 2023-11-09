@@ -26,5 +26,6 @@ Bu nedenle, her JobInstance birden çok JobExecution'a sahip olabilir.
 
 Step, bir toplu işin bağımsız, sıralı bir aşamasını kapsülleyen bir etki alanı nesnesidir. Bir toplu işte bir iş birimi tanımlamak için gerekli tüm bilgileri içerir.
 
-
-
+Aslında Spring Batch, işinizi bir adım akışı olarak tanımlamanıza olanak tanıyan AbstractJob sınıfını sağlar. 
+SimpleJob: Adımların sıralı yürütülmesi için. 
+FlowJob: Koşullu dallanma ve paralel yürütme dahil olmak üzere karmaşık adım akışları için. 
